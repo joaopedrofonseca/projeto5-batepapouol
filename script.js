@@ -97,12 +97,9 @@ function renderizeMsg(){
 }
 
 function scrollmesssage(){
-    lastmsg = msg[99];
-    if(lastmsg !== msg[99]){
         let element = document.querySelectorAll(".text");
         element[(element.length - 1)].scrollIntoView({behavior: "smooth"});
     }
-}
 
 
 
@@ -114,6 +111,7 @@ function sendMessage(){
     promise.then(success);
     promise.catch(fail);
     cleanText();
+    scrollmesssage();
 }
 
 function cleanText(){
@@ -138,23 +136,27 @@ function openCtts(){
     let promise = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants");
     promise.then(openCttsAns);
 }
+openCtts();
+setInterval(openCtts, 3000);
 
 let ctts;
 function openCttsAns(r){
     ctts = r.data;
+    console.log(ctts);
+    renderizeCtts();
 }
 
 function renderizeCtts(){
+    let sidebar = document.querySelector(".contacts");
+    sidebar.innerHTML = '';
     for(let i = 0; i<ctts.length; i++){
-        let sidebar = document.querySelectorAll(".sidebar.contacts");
-        sidebar.innerHTML = '';
         sidebar.innerHTML = sidebar.innerHTML +
         `
         <div class="ctt">
         <ion-icon name="person-circle"></ion-icon>
-        ${ctts[i]}
+        ${ctts[i].name}
     </div>
 
-        `
+        `;
     }
 }

@@ -88,6 +88,7 @@ ion-icon{
     position: absolute;
     right: 0px;
     z-index:  10;
+    overflow-y: scroll;
 }
 .contactMsg{
     width: 100%;
@@ -102,7 +103,13 @@ ion-icon{
     font-size: 16px;
     line-height: 19px;
 }
-.contacts ion-icon{
+.contacts{
+    height: 600px;
+}
+.ctt{
+    word-break: break-all;
+}
+.sidebar ion-icon{
     width: 20px;
     height: 20px;
     margin-right: 5px;
@@ -116,6 +123,7 @@ ion-icon{
     font-size: 16px;
     line-height: 19px;
 }
+
 .blur{
     background: rgba(0, 0, 0, 0.6);
     width: 116px;
