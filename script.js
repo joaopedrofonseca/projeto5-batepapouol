@@ -2,13 +2,15 @@ let objName;
 let userName;
 
 function username(){
-    userName = prompt('Digite seu lindo nome:');
+    userName = document.querySelector(".openScreen input").value;
+    console.log(userName);
     objName = {name: userName};
     const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", objName);
     promise.then(success);
     promise.catch(fail);
+    const hideScreen = document.querySelector(".openScreen");
+    hideScreen.classList.add("hide");
 }
-username();
 
 function fiveSecConection(){
     objName = {name: userName};
@@ -117,4 +119,42 @@ function sendMessage(){
 function cleanText(){
     const u = document.querySelector(".message textarea");
     u.value="";
+}
+
+function openSidebar(){
+    let sidebar = document.querySelector(".sidebar");
+    sidebar.classList.remove("hide");
+    let blur = document.querySelector(".blur");
+    blur.classList.remove("hide");
+}
+
+function closeSidebar(){
+    let blur = document.querySelector(".blur");
+    blur.classList.add("hide");
+    let sidebar = document.querySelector(".sidebar");
+    sidebar.classList.add("hide");
+}
+function openCtts(){
+    let promise = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants");
+    promise.then(openCttsAns);
+}
+
+let ctts;
+function openCttsAns(r){
+    ctts = r.data;
+}
+
+function renderizeCtts(){
+    for(let i = 0; i<ctts.length; i++){
+        let sidebar = document.querySelectorAll(".sidebar.contacts");
+        sidebar.innerHTML = '';
+        sidebar.innerHTML = sidebar.innerHTML +
+        `
+        <div class="ctt">
+        <ion-icon name="person-circle"></ion-icon>
+        ${ctts[i]}
+    </div>
+
+        `
+    }
 }

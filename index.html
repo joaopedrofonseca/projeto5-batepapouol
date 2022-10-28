@@ -10,11 +10,16 @@
 </head>
 <body>
     <div class="screen">
+        <div class="openScreen">
+            <img src="./img/logo 2.png">
+            <input type="text" placeholder="Digite seu nome"></input>
+            <div class="btn" onclick="username()">Entrar</div>
+        </div>
         <div class="header">
             <div class="logo">
                 <img src="./img/logo 1.png">
             </div>
-            <div class="people">
+            <div class="people" onclick="openSidebar()">
                 <ion-icon name="people"></ion-icon>
             </div>
         </div>
@@ -29,6 +34,16 @@
             <div class="button" onclick="sendMessage()">
                 <ion-icon name="paper-plane-outline"></ion-icon>
             </div>
+        </div>
+        <div class="blur hide" onclick="closeSidebar()"></div>
+
+        <div class="sidebar hide">
+            <div class="contactMsg">
+                Escolha um contato para enviar mensagem:
+            </div>
+            <div class="contacts">
+            </div>
+
         </div>
     </div>
     
