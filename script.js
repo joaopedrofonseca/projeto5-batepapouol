@@ -35,11 +35,11 @@ function getMsg(){
     
 }
 getMsg();
+setInterval(getMsg, 3000);
 
 function answr(resp){
     msg = resp.data;
     renderizeMsg();
-
 }
 function renderizeMsg(){
     const messages = document.querySelector('.screenMessages');
@@ -87,7 +87,11 @@ function renderizeMsg(){
     }
 }
 
-
+let userMsg = {};
 function sendMessage(){
     const text = document.querySelector(".message textarea").value;
+    userMsg = {from: userName, to: "Todos", text: text, type: "message"};
+    let promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', userMsg);
+    promise.then(success);
+    promise.catch(fail);
 }
