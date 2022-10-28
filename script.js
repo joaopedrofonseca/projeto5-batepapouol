@@ -41,7 +41,6 @@ setInterval(getMsg, 3000);
 function answr(resp){
     msg = resp.data;
     renderizeMsg();
-    setInterval(scrollmesssage, 3000);
 }
 
 let msg = [];
@@ -95,10 +94,9 @@ function renderizeMsg(){
     }
 }
 
-
 function scrollmesssage(){
-    lastmsg = msg;
-    if(lastmsg[99] !== msg[99]){
+    lastmsg = msg[99];
+    if(lastmsg !== msg[99]){
         let element = document.querySelectorAll(".text");
         element[(element.length - 1)].scrollIntoView({behavior: "smooth"});
     }
