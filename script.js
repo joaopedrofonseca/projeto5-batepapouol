@@ -43,6 +43,7 @@ setInterval(getMsg, 3000);
 function answr(resp){
     msg = resp.data;
     renderizeMsg();
+    scrollmesssage();
 }
 
 let msg = [];
@@ -111,7 +112,6 @@ function sendMessage(){
     promise.then(success);
     promise.catch(fail);
     cleanText();
-    scrollmesssage();
 }
 
 function cleanText(){
